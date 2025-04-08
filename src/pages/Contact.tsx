@@ -60,7 +60,7 @@ function Contact() {
                 <Linkedin className="h-6 w-6 text-purple-600 mr-4" />
                 <div>
                   <p className="text-sm text-gray-500">LinkedIn</p>
-                  <a href="https://www.linkedin.com/in/sushant-c-2017711b3/" className="text-gray-900 hover:text-purple-600">
+                  <a href="https://www.linkedin.com/in/sushant-c-2017711b3/" target="_blank" className="text-gray-900 hover:text-purple-600">
                     Connect on LinkedIn
                   </a>
                 </div>
@@ -75,7 +75,7 @@ function Contact() {
                     rel="noopener noreferrer" 
                     className="text-gray-900 hover:text-purple-600"
                   >
-                    +91 8377897610
+                    Connect on WhatsApp
                   </a>
                 </div>
               </div>
