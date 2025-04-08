@@ -1,7 +1,39 @@
-import React from 'react';
-import { Mail, Linkedin, MapPin, Phone } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Linkedin, MapPin, Phone, MessageSquare } from 'lucide-react';
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // In a production environment, you would want to send this to your backend
+    // For now, we'll just show a success message
+    alert('Thank you! Your message has been sent.');
+    
+    // Optional: Send an email notification
+    const mailtoLink = `mailto:sushantchauhan941@gmail.com?subject=New Contact Form Submission&body=Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0AMessage: ${formData.message}`;
+    window.location.href = mailtoLink;
+    
+    // Clear the form
+    setFormData({
+      name: '',
+      email: '',
+      message: ''
+    });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
   return (
     <div className="bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,18 +65,35 @@ function Contact() {
                   </a>
                 </div>
               </div>
+              <div className="flex items-center">
+                <MessageSquare className="h-6 w-6 text-purple-600 mr-4" />
+                <div>
+                  <p className="text-sm text-gray-500">WhatsApp</p>
+                  <a 
+                    href="https://wa.me/918377897610" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-gray-900 hover:text-purple-600"
+                  >
+                    +91 8377897610
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Contact Form */}
           <div className="bg-white rounded-lg p-8 shadow-lg">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
                 <input
                   type="text"
                   id="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
                 />
               </div>
@@ -53,6 +102,9 @@ function Contact() {
                 <input
                   type="email"
                   id="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
                 />
               </div>
@@ -61,6 +113,9 @@ function Contact() {
                 <textarea
                   id="message"
                   rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
                 ></textarea>
               </div>
@@ -78,4 +133,4 @@ function Contact() {
   );
 }
 
-export default Contact
+export default Contact;
