@@ -24,7 +24,7 @@ function Footer() {
               <Mail className="h-5 w-5 mr-2" />
               sushantchauhan941@gmail.com
             </a>
-            <a href="https://linkedin.com/in/yourusername" className="text-gray-400 hover:text-purple-400 flex items-center">
+            <a href="https://www.linkedin.com/in/sushant-c-2017711b3/" className="text-gray-400 hover:text-purple-400 flex items-center">
               <Linkedin className="h-5 w-5 mr-2" />
               LinkedIn
             </a>
